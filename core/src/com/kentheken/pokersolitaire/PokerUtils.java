@@ -6,13 +6,23 @@ import com.badlogic.gdx.utils.Array;
  * Created by kenneth on 4/6/15.
  */
 public class PokerUtils {
-    public enum HandRank { NONE, ONE_PAIR, TWO_PAIRS, THREE_OF_A_KIND, STRAIGHT,
-        FLUSH, FULL_HOUSE, FOUR_OF_A_KIND, STRAIGHT_FLUSH, ROYAL_FLUSH }
+    public static final class HandRank {
+        public static final int NONE = 0;
+        public static final int ONE_PAIR = 1;
+        public static final int TWO_PAIRS = 2;
+        public static final int THREE_OF_A_KIND = 3;
+        public static final int STRAIGHT = 4;
+        public static final int FLUSH = 5;
+        public static final int FULL_HOUSE = 6;
+        public static final int FOUR_OF_A_KIND = 7;
+        public static final int STRAIGHT_FLUSH = 8;
+        public static final int ROYAL_FLUSH = 9;
+    }
 
     private static Array<Integer> mTiebreakers;
     private static Array<Card> mHand;
 
-    public static HandRank getHandRank(Array<Card> hand) {
+    public static int getHandRank(Array<Card> hand) {
         mHand = hand;
         if (isFlush()) {
             if (isStraight()) {
